@@ -16,11 +16,17 @@ public class Pizza extends MenuItem {
 
     public Pizza(String name) {
         this.setName(name);
+        this.getCalories();
+        this.getPrice();
+    }
+
+    public void addTopping(Topping topping) {
+        this.toppingList.add(topping);
     }
 
     @Override
     public double getPrice() {
-        //al inizio solo prezzo impasto
+        //all'inizio solo prezzo impasto
         double total = 4.3;
         for (Topping t : toppingList){
             total+= t.getPrice();

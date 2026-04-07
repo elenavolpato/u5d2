@@ -1,22 +1,24 @@
 package raposinha.u5d1;
 
-import entities.Drink;
+import config.MenuConfig;
+import entities.Menu;
+import entities.Pizza;
 import entities.Topping;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@Import(MenuConfig.class)
 public class U5d1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(U5d1Application.class, args);
-
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(U5d1Application.class);
-
-		Topping tomato = ctx.getBean(Topping.class);
-		tomato.setCalories(12);
-		System.out.println(tomato);
-
+		var ctx = SpringApplication.run(U5d1Application.class, args);
+		Menu menu = ctx.getBean(Menu.class);
+		menu.print();
+		Pizza myPizza = ctx.getBean("margheritaPizza", Pizza.class);
+		myPizza.addTopping(ctx.getBean("onions", Topping.class));
+		System.out.println("myPizza " + myPizza);
+		ctx.close();
 	}
 }

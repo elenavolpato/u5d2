@@ -8,7 +8,7 @@ import lombok.*;
 
 public class Topping extends MenuItem {
     public Topping(String name, Integer calories, double price) {
-        super();
+        super(name, calories, price);
     }
 
 }
