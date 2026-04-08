@@ -110,18 +110,15 @@ public class MenuConfig {
         p.getToppingList().add(cheeseTopping());
         p.getToppingList().add(hamTopping());
         p.getToppingList().add(hamTopping());
-        p.setXL(false);
+        p.setXL(true);
         return p;
     }
+
+
     @Bean
-    public Menu pizzeriaMenu() {
-        List<Pizza> pizzaList = List.of(margheritaPizza(), hawaiianPizza(), salamiPizza(), customPizzaDoubleHam());
-        List<Topping> toppingList = List.of(cheeseTopping(), hamTopping(), onionsTopping(), pineappleTopping(), salamiTopping());
-        List<Drink> drinkList = List.of(lemonade(), water(), wine());
-
-        return new Menu(pizzaList, toppingList, drinkList);
+    public Menu pizzeriaMenu2(List<Pizza> pizzas, List<Topping> toppings, List<Drink> drinks){
+        return new Menu(pizzas, toppings, drinks);
     }
-
 
 
 
